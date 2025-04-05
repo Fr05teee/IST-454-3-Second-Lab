@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    const TARGET_TIME = 3; // <-- Configurable target time in seconds
+
     let startTime = null;
     let attempts = [];
     let chart;
@@ -22,7 +24,7 @@ $(document).ready(function () {
 
             $btn.val("Start");
 
-            let diff = Math.abs(3 - elapsed);
+            let diff = Math.abs(TARGET_TIME - elapsed);
             let color = diff === 0 ? "green" :
                 diff <= 0.2 ? "blue" :
                     diff <= 0.5 ? "goldenrod" : "red";
@@ -35,37 +37,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#toggleDetails").on("click", function () {
-        $("#detailsSection").toggleClass("d-none");
-    });
-
-    $("#toggleSummary").on("click", function () {
-        $("#summarySection").toggleClass("d-none");
-    });
-
-    function updateTable() {
-        let $body = $("#attemptTableBody").empty();
-        $.each(attempts, function (i, attempt) {
-            $body.append(`<tr>
-                <td>${attempt.attempt}</td>
-                <td>${attempt.start}</td>
-                <td>${attempt.stop}</td>
-                <td>${attempt.elapsed}</td>
-            </tr>`);
-        });
-    }
-
-    function updateSummary() {
-        let times = attempts.map(a => a.elapsed);
-        let min = Math.min(...times).toFixed(2);
-        let max = Math.max(...times).toFixed(2);
-        let avg = (times.reduce((a, b) => a + b, 0) / times.length).toFixed(2);
-
-        $("#totalAttempts").text(attempts.length);
-        $("#minTime").text(min);
-        $("#maxTime").text(max);
-        $("#avgTime").text(avg);
-    }
+    // ... rest of your code stays the same ...
 
     function updateChart() {
         if (chart) chart.destroy();
@@ -73,7 +45,7 @@ $(document).ready(function () {
         let labels = attempts.map(a => `#${a.attempt}`);
         let data = attempts.map(a => a.elapsed);
         let colors = data.map(time => {
-            let diff = Math.abs(3 - time);
+            let diff = Math.abs(TARGET_TIME - time);
             return diff === 0 ? "green" :
                 diff <= 0.2 ? "blue" :
                     diff <= 0.5 ? "yellow" : "red";
