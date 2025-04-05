@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const TARGET_TIME = 3; // <-- Configurable target time in seconds
+    const TARGET_TIME = 3;
 
     let startTime = null;
     let attempts = [];
@@ -37,7 +37,7 @@ $(document).ready(function () {
         }
     });
 
-    // ... rest of your code stays the same ...
+
 
     function updateChart() {
         if (chart) chart.destroy();
