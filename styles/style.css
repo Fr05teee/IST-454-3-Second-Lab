@@ -1,0 +1,18 @@
+body {
+    background: linear-gradient(to bottom right, #ffffff, #abe4cc);
+
+}
+
+#startBtn:hover {
+    background-color: #00bcd4;
+}
+
+#startBtn {
+    font-size: 2rem;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+#result {
+    min-height: 2rem;
+}
