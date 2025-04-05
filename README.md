@@ -6,3 +6,6 @@
 Github Page - https://fr05teee.github.io/IST-454-3-Second-Lab/
 
 Github Link - https://github.com/Fr05teee/IST-454-3-Second-Lab.git
+
+--- References ---
+https://www.chartjs.org/docs/latest/
