@@ -75,4 +75,42 @@ $(document).ready(function () {
             }
         });
     }
+    // Toggle button functionality
+    $("#toggleDetails").on("click", function () {
+        $("#detailsSection").toggleClass("d-none");
+    });
+
+    $("#toggleSummary").on("click", function () {
+        $("#summarySection").toggleClass("d-none");
+    });
+
+    function updateTable() {
+        let $body = $("#attemptTableBody");
+        $body.empty();
+
+        attempts.forEach(a => {
+            $body.append(`
+                <tr>
+                    <td>${a.attempt}</td>
+                    <td>${a.start}</td>
+                    <td>${a.stop}</td>
+                    <td>${a.elapsed}</td>
+                </tr>
+            `);
+        });
+    }
+
+    function updateSummary() {
+        let total = attempts.length;
+        let times = attempts.map(a => a.elapsed);
+        let min = Math.min(...times).toFixed(2);
+        let max = Math.max(...times).toFixed(2);
+        let avg = (times.reduce((a, b) => a + b, 0) / total).toFixed(2);
+
+        $("#totalAttempts").text(total);
+        $("#minTime").text(min);
+        $("#maxTime").text(max);
+        $("#avgTime").text(avg);
+    }
+
 });
